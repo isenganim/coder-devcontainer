@@ -17,7 +17,7 @@
       "moby": false
     },
     "ghcr.io/coder/devcontainer-features/code-server:1": {
-      "version": "latest",
+      "version": "4.103.2",
       "port": 13337,
       "host": "0.0.0.0"
     }
