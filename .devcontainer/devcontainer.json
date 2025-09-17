@@ -27,9 +27,7 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ms-azuretools.vscode-docker",
-        "golang.go"
-      ]
+        "ms-azuretools.vscode-docker"      ]
     }
   },
   "forwardPorts": [3000, 3100, 5173, 13337],
