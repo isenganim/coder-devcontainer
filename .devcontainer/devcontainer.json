@@ -26,6 +26,12 @@
       // leave defaults, or set specific versions if needed
       // "version": "latest"
 	  "moby": false
+    },
+
+    // VS Code in the browser via OpenVSCode Server
+    "ghcr.io/devcontainers/features/openvscode-server:1": {
+      "version": "latest",
+      "port": "3100"
     }
   },
 
@@ -34,15 +40,20 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "golang.go",
         "ms-azuretools.vscode-docker"
       ]
     }
   },
 
   // common dev ports; adjust to your app
-  "forwardPorts": [3000, 5173],
+  "forwardPorts": [3000, 3100, 5173],
+
+  "portsAttributes": {
+    "3100": {
+      "label": "OpenVSCode Server"
+    }
+  },
 
   "remoteUser": "vscode",
-  "postCreateCommand": "node -v && go version && docker --version"
+  "postCreateCommand": "node -v && go version && docker --version && openvscode-server --version"
 }
