@@ -1,0 +1,47 @@
+{
+  "name": "Node + Go + Docker (Debian)",
+  // tracks latest Debian base from the official Dev Containers images
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+
+  "features": {
+    // QoL: non-root user, zsh, basic CLI tools
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "upgradePackages": true
+    },
+
+    // Node.js (latest)
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "latest"
+    },
+
+    // Go (latest)
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "latest"
+    },
+
+    // Docker inside the devcontainer (DinD)
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      // leave defaults, or set specific versions if needed
+      // "version": "latest"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "golang.go",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+
+  // common dev ports; adjust to your app
+  "forwardPorts": [3000, 5173],
+
+  "remoteUser": "vscode",
+  "postCreateCommand": "node -v && go version && docker --version"
+}
