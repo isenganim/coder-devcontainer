@@ -1,7 +1,7 @@
 {
   "name": "Node + Go + Docker (Debian)",
   // tracks latest Debian base from the official Dev Containers images
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "image": "mcr.microsoft.com/devcontainers/base:debian-bookworm",
 
   "features": {
     // QoL: non-root user, zsh, basic CLI tools
@@ -25,7 +25,7 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       // leave defaults, or set specific versions if needed
       // "version": "latest"
-	  "moby": false
+	  // "moby": false
     }
   },
 
