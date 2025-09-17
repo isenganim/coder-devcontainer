@@ -1,51 +1,27 @@
 {
   "name": "Node + Go + Docker (Debian)",
-  // Tracks latest Debian base from the official Dev Containers images
   "image": "mcr.microsoft.com/devcontainers/base:debian",
-
   "features": {
-    // QoL: non-root user, zsh, basic CLI tools
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": true,
       "configureZshAsDefaultShell": true,
       "upgradePackages": true
     },
-
-    // Node.js (latest)
     "ghcr.io/devcontainers/features/node:1": {
       "version": "latest"
     },
-
-    // Go (latest)
     "ghcr.io/devcontainers/features/go:1": {
       "version": "latest"
     },
-
-    // Docker inside the devcontainer (DinD)
-    // Debian "debian" tag currently maps to trixie; moby packages are gone there.
-    // Flip to Docker Engine from Docker's apt repo:
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "moby": false
-      // "version": "latest" // optional
     },
-
-    // VS Code in the browser via OpenVSCode Server (kept on port 3100)
-    "ghcr.io/devcontainers/features/openvscode-server:1": {
-      "version": "latest",
-      "port": "3100",
-      "telemetry-level": "off"
-    },
-
-    // ALSO expose code-server (VS Code desktop in the browser) on 13337
-    // Host 0.0.0.0 so it binds on the container's interface
     "ghcr.io/coder/devcontainer-features/code-server:1": {
       "version": "latest",
       "port": 13337,
       "host": "0.0.0.0"
-      // "extensions": "ms-azuretools.vscode-docker,esbenp.prettier-vscode"
     }
   },
-
   "customizations": {
     "vscode": {
       "extensions": [
@@ -56,23 +32,11 @@
       ]
     }
   },
-
-  // Common dev ports; adjust to your app
   "forwardPorts": [3000, 3100, 5173, 13337],
-
   "portsAttributes": {
     "3100": { "label": "OpenVSCode Server" },
     "13337": { "label": "code-server" }
   },
-
-  // (Optional) Set a password for code-server auth.
-  // If not set, code-server may require you to provide one via environment.
-//   "containerEnv": {
-//     "PASSWORD": "change-me-please",
-//     "CODE_SERVER_AUTH": "password"
-//   },
-
   "remoteUser": "vscode",
-
-  "postCreateCommand": "node -v && go version && docker --version && openvscode-server --version || true && code-server --version || true"
+  "postCreateCommand": "node -v && go version && docker --version && code-server --version || true"
 }
