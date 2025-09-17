@@ -25,6 +25,7 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       // leave defaults, or set specific versions if needed
       // "version": "latest"
+	  "moby": false
     }
   },
 
